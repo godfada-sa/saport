@@ -1,14 +1,11 @@
 /* ============================================================
-   WhoamiTwist — Portfolio JS
+   IAMSAFFUL — Portfolio JS
    ============================================================ */
 (function () {
   "use strict";
-
-  // This portfolio is motion-driven, so animations play even when the OS
-  // "reduce motion" setting is on. Set FORCE_MOTION = false to honor it.
   const FORCE_MOTION = true;
   const prefersReduced = FORCE_MOTION ? false : window.matchMedia("(prefers-reduced-motion: reduce)").matches;
-  const $  = (s, c = document) => c.querySelector(s);
+  const $ = (s, c = document) => c.querySelector(s);
   const $$ = (s, c = document) => [...c.querySelectorAll(s)];
 
   /* ---------- Preloader (boot sequence) ---------- */
@@ -31,8 +28,7 @@
     if (prefersReduced || !log) { finish(); return; }
     document.body.style.overflow = "hidden";
 
-    // Track the REAL page load — the boot script fills to ~90%, then the
-    // loader holds until the browser actually finishes loading the page.
+
     let pageReady = document.readyState === "complete";
     if (!pageReady) addEventListener("load", () => { pageReady = true; }, { once: true });
 
@@ -48,8 +44,8 @@
     }
 
     const steps = [
-      { cmd: "booting portfolio",   status: "booting",   ok: "core modules loaded" },
-      { cmd: "securing connection", status: "securing",  ok: "tls 1.3 handshake" },
+      { cmd: "booting portfolio", status: "booting", ok: "core modules loaded" },
+      { cmd: "securing connection", status: "securing", ok: "tls 1.3 handshake" },
       { cmd: "rendering interface", status: "rendering", ok: "assets ready" },
     ];
 
@@ -144,7 +140,7 @@
 
     // Press reaction
     addEventListener("mousedown", () => { ring.classList.add("is-down"); dot.classList.add("is-down"); });
-    addEventListener("mouseup",   () => { ring.classList.remove("is-down"); dot.classList.remove("is-down"); });
+    addEventListener("mouseup", () => { ring.classList.remove("is-down"); dot.classList.remove("is-down"); });
 
     // Hide when leaving / returning to the window
     document.addEventListener("mouseleave", () => { dot.classList.add("is-hidden"); ring.classList.add("is-hidden"); });
@@ -582,7 +578,7 @@
       status.textContent = "";
       status.className = "form-status";
 
-      // Send via FormSubmit (no backend needed) -> delivers to twisthero15@gmail.com
+
       const data = new FormData(form);
       const category = ($("#ct-category")?.value || "General").trim();
       const subjVal = $("#subject")?.value.trim();
@@ -590,7 +586,7 @@
       data.append("_template", "table");
       data.append("_captcha", "false");
 
-      fetch("https://formsubmit.co/ajax/twisthero15@gmail.com", {
+      fetch("https://formsubmit.co/ajax/safful652@gmail.com", {
         method: "POST",
         headers: { "Accept": "application/json" },
         body: data,
@@ -612,7 +608,7 @@
         .catch((err) => {
           // Surface the real reason in the console for debugging (activation, CORS, network…)
           console.error("[contact form] send failed:", err);
-          status.textContent = "✗ Couldn't send. Please email twisthero15@gmail.com directly.";
+          status.textContent = "✗ Couldn't send. Please email safful652@gmail.com directly.";
           status.className = "form-status err";
         })
         .finally(() => {
@@ -730,7 +726,7 @@
       document.body.style.overflow = "hidden";
 
       const p = player.play();
-      if (p && p.catch) p.catch(() => {});
+      if (p && p.catch) p.catch(() => { });
 
       if (beatOn) {
         if (!beat) beat = createBeat();
@@ -800,14 +796,18 @@
       { icon: "ti-certificate", label: "Go to Certifications", hint: "certs", run: go("#certs") },
       { icon: "ti-message-circle", label: "Go to Contact", hint: "contact", run: go("#contact") },
       { icon: "ti-arrow-up", label: "Back to top", hint: "hero", run: go("#hero") },
-      { icon: "ti-copy", label: "Copy email address", hint: "twisthero15@gmail.com", run: () => {
-          navigator.clipboard?.writeText("twisthero15@gmail.com").catch(() => {});
+      {
+        icon: "ti-copy", label: "Copy email address", hint: "safful652@gmail.com", run: () => {
+          navigator.clipboard?.writeText("safful652@gmail.com").catch(() => { });
           close();
-        } },
-      { icon: "ti-download", label: "Download CV", hint: "résumé", run: () => {
+        }
+      },
+      {
+        icon: "ti-download", label: "Download CV", hint: "résumé", run: () => {
           close();
           window.open("assets/cv.html", "_blank", "noopener");
-        } },
+        }
+      },
       { icon: "ti-send", label: "Hire me — open contact form", hint: "let's talk", run: go("#contact") },
       { icon: "ti-brand-github", label: "Open GitHub", hint: "external", run: () => { window.open("https://github.com/", "_blank", "noopener"); close(); } },
     ];
@@ -897,13 +897,13 @@
         "&nbsp;&nbsp;<b>banner</b>   – the logo<br>" +
         "&nbsp;&nbsp;<b>sudo hire-me</b> – ;)<br>" +
         "&nbsp;&nbsp;<b>clear</b>    – clear the screen", "t-out"),
-      whoami: () => print("WhoamiTwist — Full-Stack Developer, UI/UX Designer & Ethical Hacker. Builder by day, breaker by night.", "t-out"),
+      whoami: () => print("IAMSafful — Full-Stack Developer, UI/UX Designer & Ethical Hacker. Builder by day, breaker by night.", "t-out"),
       skills: () => print("→ React · Next.js · TypeScript · Node · Python<br>→ Figma · Design Systems<br>→ Burp · Metasploit · Nmap · OSINT · Linux", "t-out"),
       projects: () => { print("Opening projects…", "t-out"); setTimeout(() => $("#projects")?.scrollIntoView({ behavior: "smooth" }), 350); },
       services: () => { print("Opening services…", "t-out"); setTimeout(() => $("#services")?.scrollIntoView({ behavior: "smooth" }), 350); },
       contact: () => { print("Routing you to the contact form…", "t-out"); setTimeout(() => $("#contact")?.scrollIntoView({ behavior: "smooth" }), 350); },
       social: () => print("GitHub · LinkedIn · X · Telegram · Discord — links are in the hero & footer.", "t-out"),
-      banner: () => print("<span class='t-glow'>██╗    ██╗████████╗  WhoamiTwist</span><br><span class='t-glow'>╚██╗ ██╔╝╚══██╔══╝  build · secure · ship</span>", "t-out"),
+      banner: () => print("<span class='t-glow'>██╗    ██╗████████╗  IAMSafful</span><br><span class='t-glow'>╚██╗ ██╔╝╚══██╔══╝  build · secure · ship</span>", "t-out"),
       "sudo hire-me": () => print("[sudo] access granted ✓ — scroll to Contact and let's talk. The smart move. 🚀", "t-glow"),
       clear: () => { output.innerHTML = ""; },
       ls: () => print("about.md  skills.json  projects/  services/  contact.sh", "t-out"),
@@ -1011,7 +1011,7 @@
           const t = document.createElement("textarea");
           t.value = handle; t.style.position = "fixed"; t.style.opacity = "0";
           document.body.appendChild(t); t.select();
-          try { document.execCommand("copy"); } catch {}
+          try { document.execCommand("copy"); } catch { }
           t.remove();
         }
         discord.classList.add("is-copied");
