@@ -1026,7 +1026,7 @@
     // WhatsApp — keep the wa.me link prefilled with whatever's typed, in real time
     const wa = $("#ct-wa-send");
     if (wa) {
-      const PHONE = "233550778863";
+      const PHONE = "233256238978";
       const buildLink = () => {
         const cat = ($("#ct-category")?.value || "General").trim();
         const name = $("#name")?.value.trim();
