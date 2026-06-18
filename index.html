@@ -1,0 +1,1186 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#05080f" />
+  <meta name="description"
+    content="IamSAFFUL — Full-Stack Developer, UI/UX Designer, Ethical Hacker & Penetration Tester. I build secure, beautiful, high-performance digital experiences." />
+  <meta name="author" content="IamSAFFUL" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="IamSAFFUL — Developer · Designer · Ethical Hacker" />
+  <meta property="og:description" content="I build secure, beautiful, high-performance digital experiences." />
+  <meta property="og:type" content="website" />
+
+  <title>IamSAFFUL — Developer · Ethical Hacker</title>
+
+  <link rel="icon" type="image/png" href="assets/logo.png" />
+  <link rel="apple-touch-icon" href="assets/logo.png" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com/" />
+  <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&amp;family=JetBrains+Mono:wght@400;500;600;700&amp;family=Inter:wght@400;500;600;700;800&amp;display=swap"
+    rel="stylesheet" />
+
+  <!-- Tabler Icons -->
+  <link rel="stylesheet" href="vendor/tabler-icons/tabler-icons.min.css" />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<body>
+  <!-- Animated background canvas -->
+  <canvas id="bg-canvas" aria-hidden="true"></canvas>
+  <div class="grid-overlay" aria-hidden="true"></div>
+  <div class="noise" aria-hidden="true"></div>
+
+  <!-- Scroll progress bar -->
+  <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+  <!-- Custom cursor -->
+  <div class="cursor-dot" id="cursor-dot" aria-hidden="true"></div>
+  <div class="cursor-ring" id="cursor-ring" aria-hidden="true"></div>
+
+  <!-- Preloader -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__grid" aria-hidden="true"></div>
+    <div class="preloader__inner">
+      <div class="preloader__brand">
+        <img src="assets/logo.png" alt="" class="preloader__logo" />
+        <span class="preloader__brandtext">Iam<span class="accent">SAFFUL</span></span>
+      </div>
+
+      <div class="preloader__window">
+        <div class="preloader__titlebar">
+          <span class="preloader__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+          <span class="preloader__file">boot.sh</span>
+          <span class="preloader__status" id="pl-status">initializing…</span>
+        </div>
+        <div class="preloader__log" id="pl-log"></div>
+      </div>
+
+      <div class="preloader__meter">
+        <div class="preloader__bar"><span id="preloader-bar"></span></div>
+        <div class="preloader__pct"><span id="pl-pct">0</span><b>%</b></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ============ NAV ============ -->
+  <header class="nav" id="nav">
+    <div class="container nav__inner">
+      <a href="#hero" class="brand" aria-label="IamSAFFUL home">
+        <img src="assets/logo.png" alt="IamSAFFUL logo" class="brand__logo" />
+        <span class="brand__text">Iam<span class="accent">SAFFUL</span></span>
+      </a>
+
+      <nav class="nav__links" id="nav-links" aria-label="Primary">
+        <button class="nav__close" id="nav-close" type="button" aria-label="Close menu">
+          <i class="ti ti-x" aria-hidden="true"></i>
+        </button>
+        <span class="nav__indicator" id="nav-indicator" aria-hidden="true"></span>
+        <a href="#about" class="nav__link">About</a>
+        <a href="#skills" class="nav__link">Skills</a>
+        <a href="#projects" class="nav__link">Projects</a>
+        <a href="#services" class="nav__link">Services</a>
+        <a href="#certs" class="nav__link">Certs</a>
+        <a href="#contact" class="nav__link">Contact</a>
+        <a href="#contact" class="btn btn--primary nav__cta-mobile">Hire Me</a>
+      </nav>
+      <div class="nav__backdrop" id="nav-backdrop" hidden></div>
+
+      <div class="nav__right">
+        <button class="cmdk-trigger" id="cmdk-trigger" type="button" aria-label="Open command palette">
+          <i class="ti ti-command" aria-hidden="true"></i>
+          <span class="cmdk-trigger__keys"><kbd>Ctrl</kbd><kbd>K</kbd></span>
+        </button>
+        <a href="#contact" class="btn btn--primary btn--sm">Hire Me</a>
+        <button class="nav__toggle" id="nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <!-- Floating animated tech stack -->
+      <div class="hero__float" aria-hidden="true">
+        <span class="float-chip float-chip--js" style="--x:8%;  --y:22%; --d:0s;   --dur:7s;">
+          <i class="ti ti-brand-javascript"></i> JavaScript
+        </span>
+        <span class="float-chip float-chip--ts" style="--x:80%; --y:16%; --d:1.1s; --dur:8s;">
+          <i class="ti ti-brand-typescript"></i> TypeScript
+        </span>
+        <span class="float-chip float-chip--react" style="--x:6%; --y:64%; --d:2s;   --dur:9s;">
+          <i class="ti ti-brand-react"></i> React
+        </span>
+        <span class="float-chip float-chip--py" style="--x:86%; --y:60%; --d:.6s;  --dur:7.5s;">
+          <i class="ti ti-brand-python"></i> Python
+        </span>
+        <span class="float-chip float-chip--node" style="--x:16%; --y:88%; --d:1.6s; --dur:8.5s;">
+          <i class="ti ti-brand-nodejs"></i> Node.js
+        </span>
+        <span class="float-chip float-chip--docker" style="--x:74%; --y:86%; --d:2.4s; --dur:9.5s;">
+          <i class="ti ti-brand-docker"></i> Docker
+        </span>
+      </div>
+
+      <div class="container hero__grid">
+        <div class="hero__left">
+          <div class="hero__eyebrow reveal">
+            <span class="hero__eyebrow-line"></span>
+            <span class="hero__eyebrow-text">// <span id="role-rotator" aria-live="polite">Full-Stack
+                Developer</span><span class="role-caret"></span></span>
+          </div>
+
+          <h1 class="hero__title reveal">
+            <span class="hero__hello">Hello, I'm</span>
+            <span class="hero__name"><span class="hero__name-accent">SAFFUL</span><span
+                class="type-caret hero__cursor"></span></span>
+          </h1>
+
+          <div class="code-block reveal" role="img" aria-label="Code snippet describing WhoamiTwist">
+            <div class="code-block__bar">
+              <span class="dot dot--red"></span>
+              <span class="dot dot--yellow"></span>
+              <span class="dot dot--green"></span>
+              <span class="code-block__file">identity.js</span>
+            </div>
+            <pre class="code-block__body"><code><span class="tok-key">const</span> <span class="tok-var">safful</span> = {
+  <span class="tok-prop">role</span>: <span class="tok-str">"Full-Stack Developer"</span>,
+  <span class="tok-prop">specialization</span>: <span class="tok-str">"Frontend Architecture & Product Design"</span>,
+  <span class="tok-prop">security</span>: <span class="tok-str">"Security Research · Ethical Hacking · Pentesting"</span>,
+  <span class="tok-prop">expertise</span>: <span class="tok-str">"Scalable Systems · Cloud Infrastructure"</span>,
+  <span class="tok-prop">mission</span>: <span class="tok-str">"Engineering resilient, secure, and exceptional digital experiences"</span>,
+  <span class="tok-prop">status</span>: <span class="tok-str tok-pulse">"Open for High-Impact Projects"</span> <span class="tok-com">// ✦</span>
+};</code></pre>
+          </div>
+
+          <div class="hero__cta reveal">
+            <a href="#projects" class="btn btn--primary">
+              <i class="ti ti-briefcase" aria-hidden="true"></i>
+              View Projects <span class="btn__arrow">→</span>
+            </a>
+            <a href="#contact" class="btn btn--ghost">
+              <i class="ti ti-message-circle" aria-hidden="true"></i>
+              Let's Talk
+            </a>
+          </div>
+
+          <div class="hero__socials reveal" aria-label="Social links">
+            <span class="hero__socials-label">Find me</span>
+            <a href="#" class="social" aria-label="GitHub" title="GitHub">GH</a>
+            <a href="#" class="social" aria-label="LinkedIn" title="LinkedIn">in</a>
+            <a href="#" class="social" aria-label="X / Twitter" title="X">X</a>
+            <a href="#" class="social" aria-label="Telegram" title="Telegram">TG</a>
+            <a href="#" class="social" aria-label="Discord" title="Discord">DC</a>
+          </div>
+        </div>
+
+        <div class="hero__right">
+          <div class="avatar reveal">
+            <div class="avatar__ring avatar__ring--outer">
+              <span class="avatar__ring-dot avatar__ring-dot--1"></span>
+              <span class="avatar__ring-dot avatar__ring-dot--2"></span>
+            </div>
+            <div class="avatar__ring avatar__ring--inner"></div>
+            <div class="avatar__glow"></div>
+            <div class="avatar__img">
+              <img src="assets/twistlab.png"
+                alt="WhoamiTwist developer workstation — code editor and Twist Labs dashboard" class="avatar__logo" />
+            </div>
+
+            <div class="avatar__badge avatar__badge--1">
+              <i class="ti ti-code" aria-hidden="true"></i>
+              <span class="avatar__badge-text"><strong>Full-Stack</strong>React · Node · Python</span>
+            </div>
+            <div class="avatar__badge avatar__badge--2">
+              <i class="ti ti-shield-check" aria-hidden="true"></i>
+              <span class="avatar__badge-text"><strong>Security</strong>Pentest · Exploit Dev</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero__scroll" aria-hidden="true">
+        <span>scroll</span>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track">
+        <span>React</span><span>•</span><span>Node.js</span><span>•</span><span>TypeScript</span><span>•</span>
+        <span>Python</span><span>•</span><span>Next.js</span><span>•</span><span>Kali Linux</span><span>•</span>
+        <span>Burp Suite</span><span>•</span><span>Metasploit</span><span>•</span><span>Figma</span><span>•</span>
+        <span>PostgreSQL</span><span>•</span><span>Docker</span><span>•</span><span>OSINT</span><span>•</span>
+        <span>React</span><span>•</span><span>Node.js</span><span>•</span><span>TypeScript</span><span>•</span>
+        <span>Python</span><span>•</span><span>Next.js</span><span>•</span><span>Kali Linux</span><span>•</span>
+        <span>Burp Suite</span><span>•</span><span>Metasploit</span><span>•</span><span>Figma</span><span>•</span>
+        <span>PostgreSQL</span><span>•</span><span>Docker</span><span>•</span><span>OSINT</span><span>•</span>
+      </div>
+    </div>
+
+    <!-- ============ STATS ============ -->
+    <section class="stats">
+      <div class="container stats__grid">
+        <div class="stat reveal">
+          <div class="stat__num" data-count="120" data-suffix="+">0</div>
+          <div class="stat__label">Projects Shipped</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="60" data-suffix="+">0</div>
+          <div class="stat__label">Happy Clients</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="40" data-suffix="+">0</div>
+          <div class="stat__label">Vulns Reported</div>
+        </div>
+        <div class="stat reveal">
+          <div class="stat__num" data-count="6" data-suffix="+">0</div>
+          <div class="stat__label">Years Experience</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ ABOUT ============ -->
+    <section class="section" id="about">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">// about me</span>
+          <h2 class="section__title">I craft <span class="accent">digital</span> &amp; secure them</h2>
+        </div>
+
+        <div class="about__grid">
+          <div class="about__visual reveal">
+            <div class="terminal">
+              <div class="terminal__bar">
+                <span class="dot dot--red"></span>
+                <span class="dot dot--yellow"></span>
+                <span class="dot dot--green"></span>
+                <span class="terminal__title">safful652@gmail.com: ~</span>
+              </div>
+              <div class="terminal__body" id="terminal-body">
+                <div id="terminal-output">
+                  <p><span class="t-prompt">$</span> whoami</p>
+                  <p class="t-out">IAMSAFFUL — builder &amp; breaker</p>
+                  <p><span class="t-prompt">$</span> cat skills.txt</p>
+                  <p class="t-out">→ Full-stack engineering</p>
+                  <p class="t-out">→ Product &amp; UI/UX design</p>
+                  <p class="t-out">→ Offensive security / pentesting</p>
+                  <p><span class="t-prompt">$</span> ./run --mission</p>
+                  <p class="t-out t-glow">Ship fast. Stay secure. Look elite.</p>
+                  <p class="t-hint">Type <b>help</b> and hit Enter — this terminal is live.</p>
+                </div>
+                <form class="terminal__form" id="terminal-form" autocomplete="off">
+                  <span class="t-prompt">$</span>
+                  <input class="terminal__input" id="terminal-input" type="text" spellcheck="false"
+                    aria-label="Terminal command input" />
+                  <span class="t-caret" id="terminal-caret">▋</span>
+                </form>
+              </div>
+            </div>
+          </div>
+
+          <div class="about__content reveal">
+            <p class="about__lead">
+              I am a Full-Stack Engineer and Cybersecurity Specialist dedicated to building digital products that are
+              secure, scalable, and exceptionally crafted. My work bridges the gap between innovative software
+              development
+              and advanced security engineering, ensuring every solution is designed for both performance and
+              resilience.
+            </p>
+
+            <p class="about__text">
+              From architecting modern web applications and cloud infrastructures to conducting penetration tests and
+              vulnerability assessments, I approach every project with a dual perspective: creating systems that deliver
+              outstanding user experiences while remaining resilient against real-world threats. The result is
+              technology
+              that is fast, reliable, secure, and built to scale.
+            </p>
+
+            <p class="about__text">
+              I started where most builders do — curious about how things work, then curious about how they
+              <em>break</em>. Over <strong>6+ years</strong> that curiosity turned into a craft: shipping
+              <strong>120+ projects</strong>, partnering with <strong>60+ clients</strong>, and reporting
+              <strong>40+ vulnerabilities</strong> along the way. I care about the details others skip — the empty
+              state,
+              the rate-limit, the forgotten endpoint — because that's usually where great products (and real security)
+              live
+              or die. When I'm not shipping, I'm in a lab breaking my own builds to make the next one stronger.
+            </p>
+
+            <ul class="about__list">
+              <li><span class="check">✓</span> Clean, scalable, well-tested code</li>
+              <li><span class="check">✓</span> Conversion-focused UI/UX design</li>
+              <li><span class="check">✓</span> Security-first architecture &amp; audits</li>
+              <li><span class="check">✓</span> Clear reports, exact fixes, no jargon walls</li>
+              <li><span class="check">✓</span> Fast delivery &amp; honest communication</li>
+            </ul>
+
+            <div class="about__meta">
+              <div class="about__meta-item">
+                <span class="about__meta-label">Email</span>
+                <span class="about__meta-val">twisthero15@gmail.com</span>
+              </div>
+              <div class="about__meta-item">
+                <span class="about__meta-label">Based</span>
+                <span class="about__meta-val">Remote · Worldwide</span>
+              </div>
+              <div class="about__meta-item">
+                <span class="about__meta-label">Experience</span>
+                <span class="about__meta-val">6+ years</span>
+              </div>
+              <div class="about__meta-item">
+                <span class="about__meta-label">Availability</span>
+                <span class="about__meta-val accent">Freelance · Full-time</span>
+              </div>
+            </div>
+
+            <a class='btn btn--primary' href='assets/cv.html' rel='noopener' target='_blank'>Download CV <span
+                class="btn__arrow">↓</span></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SERVICES ============ -->
+    <section class="section section--alt sv-section" id="services">
+      <canvas class="sv-particles" id="sv-particles" aria-hidden="true"></canvas>
+      <div class="sv-bg-glow-1" aria-hidden="true"></div>
+      <div class="sv-bg-glow-2" aria-hidden="true"></div>
+      <div class="container">
+        <div class="sv-header reveal">
+          <span class="sv-eyebrow">what i do</span>
+          <h2 class="sv-title">Services &amp; <span class="sv-title-accent">Expertise</span></h2>
+          <p class="sv-subtitle">Four disciplines, one obsessive standard of quality.</p>
+        </div>
+
+        <div class="sv-grid">
+          <article class="sv-card sv-card-fullstack reveal" tabindex="0">
+            <div class="sv-sparks" aria-hidden="true">
+              <span class="sv-spark" style="left:20%;--sv-sx:-5px;--sv-dur:3.2s;--sv-delay:0s"></span>
+              <span class="sv-spark" style="left:50%;--sv-sx:8px;--sv-dur:4s;--sv-delay:.8s"></span>
+              <span class="sv-spark" style="left:78%;--sv-sx:-10px;--sv-dur:3.6s;--sv-delay:.3s"></span>
+            </div>
+            <span class="sv-card-number">01</span>
+            <div class="sv-icon-wrap sv-icon-wrap-blue"><i class="ti ti-code" aria-hidden="true"></i></div>
+            <h3 class="sv-card-title">Full-Stack Development</h3>
+            <p class="sv-card-desc">Robust web apps with React, Next.js, Node &amp; Python. APIs, databases, real-time
+              systems and cloud deployment.</p>
+            <div class="sv-divider"></div>
+            <div class="sv-tags">
+              <span class="sv-tag sv-tag-blue">React</span>
+              <span class="sv-tag sv-tag-blue">Node</span>
+              <span class="sv-tag sv-tag-blue">Next.js</span>
+            </div>
+            <a class="sv-cta-link sv-cta-blue" href="#projects">View projects <i class="ti ti-arrow-right"></i></a>
+          </article>
+
+          <article class="sv-card sv-card-ui reveal" tabindex="0">
+            <div class="sv-sparks" aria-hidden="true">
+              <span class="sv-spark" style="left:15%;--sv-sx:6px;--sv-dur:3.8s;--sv-delay:.5s"></span>
+              <span class="sv-spark" style="left:55%;--sv-sx:-7px;--sv-dur:3.2s;--sv-delay:.2s"></span>
+              <span class="sv-spark" style="left:80%;--sv-sx:4px;--sv-dur:4.2s;--sv-delay:1s"></span>
+            </div>
+            <span class="sv-card-number">02</span>
+            <div class="sv-icon-wrap sv-icon-wrap-purple"><i class="ti ti-sparkles" aria-hidden="true"></i></div>
+            <h3 class="sv-card-title">UI / UX Design</h3>
+            <p class="sv-card-desc">Research-driven interfaces that convert. Design systems, prototyping and motion in
+              Figma — handed off pixel-perfect.</p>
+            <div class="sv-divider"></div>
+            <div class="sv-tags">
+              <span class="sv-tag sv-tag-purple">Figma</span>
+              <span class="sv-tag sv-tag-purple">Design Systems</span>
+              <span class="sv-tag sv-tag-purple">Motion</span>
+            </div>
+            <a class="sv-cta-link sv-cta-purple" href="#projects">View designs <i class="ti ti-arrow-right"></i></a>
+          </article>
+
+          <article class="sv-card sv-card-ethical reveal" tabindex="0">
+            <div class="sv-sparks" aria-hidden="true">
+              <span class="sv-spark" style="left:25%;--sv-sx:-8px;--sv-dur:3.5s;--sv-delay:.7s"></span>
+              <span class="sv-spark" style="left:60%;--sv-sx:5px;--sv-dur:4.1s;--sv-delay:0s"></span>
+              <span class="sv-spark" style="left:85%;--sv-sx:-4px;--sv-dur:3s;--sv-delay:1.2s"></span>
+            </div>
+            <span class="sv-card-number">03</span>
+            <div class="sv-icon-wrap sv-icon-wrap-green"><i class="ti ti-shield-check" aria-hidden="true"></i></div>
+            <h3 class="sv-card-title">Ethical Hacking</h3>
+            <p class="sv-card-desc">Offensive security testing to find flaws before attackers do. Web, network &amp; API
+              assessments with clear remediation.</p>
+            <div class="sv-divider"></div>
+            <div class="sv-tags">
+              <span class="sv-tag sv-tag-green">OWASP</span>
+              <span class="sv-tag sv-tag-green">Recon</span>
+              <span class="sv-tag sv-tag-green">Exploit Dev</span>
+            </div>
+            <a class="sv-cta-link sv-cta-green" href="#projects">View reports <i class="ti ti-arrow-right"></i></a>
+          </article>
+
+          <article class="sv-card sv-card-pentest reveal" tabindex="0">
+            <div class="sv-sparks" aria-hidden="true">
+              <span class="sv-spark" style="left:10%;--sv-sx:9px;--sv-dur:3.3s;--sv-delay:.4s"></span>
+              <span class="sv-spark" style="left:45%;--sv-sx:-6px;--sv-dur:4.4s;--sv-delay:.9s"></span>
+              <span class="sv-spark" style="left:75%;--sv-sx:3px;--sv-dur:3.7s;--sv-delay:.1s"></span>
+            </div>
+            <span class="sv-card-number">04</span>
+            <div class="sv-icon-wrap sv-icon-wrap-amber"><i class="ti ti-bolt" aria-hidden="true"></i></div>
+            <h3 class="sv-card-title">Penetration Testing</h3>
+            <p class="sv-card-desc">Full-scope engagements with detailed reporting. Burp Suite, Metasploit, Nmap and
+              custom tooling, mapped to compliance.</p>
+            <div class="sv-divider"></div>
+            <div class="sv-tags">
+              <span class="sv-tag sv-tag-amber">Burp</span>
+              <span class="sv-tag sv-tag-amber">Metasploit</span>
+              <span class="sv-tag sv-tag-amber">Reports</span>
+            </div>
+            <a class="sv-cta-link sv-cta-amber" href="#contact">View methodology <i class="ti ti-arrow-right"></i></a>
+          </article>
+        </div>
+
+        <div class="sv-bottom-bar reveal">
+          <div class="sv-stat">
+            <div class="sv-stat-num" data-count="120" data-suffix="+">0</div>
+            <div class="sv-stat-label">Projects shipped</div>
+          </div>
+          <div class="sv-stat">
+            <div class="sv-stat-num" data-count="12" data-suffix="+">0</div>
+            <div class="sv-stat-label">CVEs reported</div>
+          </div>
+          <div class="sv-stat">
+            <div class="sv-stat-num" data-count="100" data-suffix="%">0</div>
+            <div class="sv-stat-label">Client satisfaction</div>
+          </div>
+          <a class="sv-hire-btn" href="#contact">
+            <i class="ti ti-send" aria-hidden="true"></i>
+            Hire me
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ SKILLS ============ -->
+    <section class="section skills-section" id="skills">
+      <canvas class="skills__particles" id="skills-particles" aria-hidden="true"></canvas>
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">// my stack</span>
+          <h2 class="section__title">Tools &amp; <span class="accent">Technologies</span></h2>
+          <p class="section__sub">The arsenal I reach for, with depth I keep sharpening.</p>
+        </div>
+
+        <div class="skills__layout">
+          <div class="skills__bars">
+            <div class="skill reveal">
+              <div class="skill__top"><span>Frontend (React / Next.js / TS)</span><span class="skill__pct">0%</span>
+              </div>
+              <div class="skill__track">
+                <div class="skill__fill" data-level="95"></div>
+              </div>
+            </div>
+            <div class="skill reveal">
+              <div class="skill__top"><span>Backend (Node / Python / SQL)</span><span class="skill__pct">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill" data-level="90"></div>
+              </div>
+            </div>
+            <div class="skill reveal">
+              <div class="skill__top"><span>Penetration Testing</span><span class="skill__pct">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill" data-level="92"></div>
+              </div>
+            </div>
+            <div class="skill reveal">
+              <div class="skill__top"><span>UI / UX Design (Figma)</span><span class="skill__pct">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill" data-level="88"></div>
+              </div>
+            </div>
+            <div class="skill reveal">
+              <div class="skill__top"><span>DevOps &amp; Cloud</span><span class="skill__pct">0%</span></div>
+              <div class="skill__track">
+                <div class="skill__fill" data-level="82"></div>
+              </div>
+            </div>
+          </div>
+
+          <div class="skills__cloud" aria-label="Technology list">
+            <span class="chip reveal"><span class="chip__dot"></span>JavaScript</span><span class="chip reveal"><span
+                class="chip__dot"></span>TypeScript</span><span class="chip reveal"><span
+                class="chip__dot"></span>Python</span>
+            <span class="chip reveal"><span class="chip__dot"></span>React</span><span class="chip reveal"><span
+                class="chip__dot"></span>Next.js</span><span class="chip reveal"><span
+                class="chip__dot"></span>Node.js</span>
+            <span class="chip reveal"><span class="chip__dot"></span>Express</span><span class="chip reveal"><span
+                class="chip__dot"></span>PostgreSQL</span><span class="chip reveal"><span
+                class="chip__dot"></span>MongoDB</span>
+            <span class="chip reveal"><span class="chip__dot"></span>Docker</span><span class="chip reveal"><span
+                class="chip__dot"></span>AWS</span><span class="chip reveal"><span class="chip__dot"></span>Linux</span>
+            <span class="chip reveal"><span class="chip__dot"></span>Kali</span><span class="chip reveal"><span
+                class="chip__dot"></span>Burp Suite</span><span class="chip reveal"><span
+                class="chip__dot"></span>Metasploit</span>
+            <span class="chip reveal"><span class="chip__dot"></span>Nmap</span><span class="chip reveal"><span
+                class="chip__dot"></span>Wireshark</span><span class="chip reveal"><span
+                class="chip__dot"></span>Figma</span>
+            <span class="chip reveal"><span class="chip__dot"></span>Tailwind</span><span class="chip reveal"><span
+                class="chip__dot"></span>Git</span><span class="chip reveal"><span
+                class="chip__dot"></span>GraphQL</span>
+            <span class="chip reveal"><span class="chip__dot"></span>Bash</span><span class="chip reveal"><span
+                class="chip__dot"></span>OSINT</span><span class="chip reveal"><span
+                class="chip__dot"></span>Wazuh</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ PROJECTS ============ -->
+    <section class="section section--alt" id="projects">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">// portfolio</span>
+          <h2 class="section__title">Projects &amp; <span class="accent">Work</span></h2>
+          <p class="section__sub">A selection of recent builds across dev, design and security.</p>
+        </div>
+
+        <div class="filters reveal" role="tablist" aria-label="Project filters">
+          <button class="filter is-active" data-filter="all">All</button>
+          <button class="filter" data-filter="dev">Development</button>
+          <button class="filter" data-filter="design">Design</button>
+          <button class="filter" data-filter="security">Security</button>
+        </div>
+
+        <div class="projects__grid" id="projects-grid">
+          <!-- cards injected/rendered statically -->
+          <article class="project project--featured reveal" data-cat="dev">
+            <button class="project__media project__media--video" type="button" data-video="assets/ovoride.mp4"
+              aria-label="Play OvoRide demo video">
+              <img class="project__poster" src="assets/ovoride-poster.png"
+                alt="OvoRide — complete ride-sharing solution" loading="lazy" />
+              <span class="project__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="26" height="26">
+                  <path d="M8 5v14l11-7z" fill="currentColor" />
+                </svg>
+              </span>
+            </button>
+            <div class="project__body">
+              <span class="project__cat">Flutter App · Full Solution</span>
+              <h3 class="project__title">OvoRide — Ride-Sharing Platform</h3>
+              <p class="project__desc">A complete cross-platform ride-sharing solution built with Flutter &amp; Laravel
+                — Rider app, Driver app, Admin panel and landing page. Live tracking, in-app payments, fare estimation
+                and a full booking flow, ready for Android &amp; iOS.</p>
+              <div class="project__tags"><span>Flutter</span><span>Dart</span><span>Laravel</span><span>iOS ·
+                  Android</span></div>
+
+              <div class="demo-access">
+                <span class="demo-access__head">// Live Demo Access</span>
+                <div class="demo-access__row">
+                  <span class="demo-access__label">Website</span>
+                  <a class="demo-access__link" href="https://preview.ovosolution.com/ovoride" target="_blank"
+                    rel="noopener">preview.ovosolution.com/ovoride ↗</a>
+                </div>
+                <div class="demo-access__row">
+                  <span class="demo-access__label">Admin Panel</span>
+                  <a class="demo-access__link" href="https://preview.ovosolution.com/ovoride/demo/admin" target="_blank"
+                    rel="noopener">/demo/admin ↗</a>
+                </div>
+                <div class="demo-access__creds">
+                  <span class="demo-cred"><b>User</b> admin</span>
+                  <span class="demo-cred"><b>Pass</b> admin</span>
+                </div>
+              </div>
+
+              <div class="project__actions">
+                <a class="btn btn--primary btn--sm" href="https://preview.ovosolution.com/ovoride" target="_blank"
+                  rel="noopener">
+                  Visit Live Site <span class="btn__arrow">↗</span>
+                </a>
+                <a class="btn btn--ghost btn--sm" href="assets/Ovoride.zip" download>
+                  <span class="btn__icon">⭳</span> Download Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" data-cat="dev">
+            <button class="project__media project__media--video" type="button" data-video="assets/twist-hero.qt"
+              aria-label="Play Twist Hero gameplay video">
+              <img class="project__poster" src="assets/twist-hero.png" alt="Twist Hero — tap-to-flip arcade game"
+                loading="lazy" />
+              <span class="project__play" aria-hidden="true">
+                <svg viewBox="0 0 24 24" width="22" height="22">
+                  <path d="M8 5v14l11-7z" fill="currentColor" />
+                </svg>
+              </span>
+              <span class="project__badge"><i class="ti ti-brand-apple" aria-hidden="true"></i> App Store</span>
+            </button>
+            <div class="project__body">
+              <span class="project__cat">iOS · Arcade Game</span>
+              <h3 class="project__title">Safful — Arcade Game</h3>
+              <p class="project__desc">A fast, addictive one-tap arcade game: flip your hero between the ground and the
+                underground to dodge obstacles above and below — each one you pass scores a point. Unlock 11 characters
+                and climb the global leaderboards. Easy to learn, hard to master — most testers couldn't beat 168
+                points. Live on the App Store.</p>
+              <div class="project__tags">
+                <span>iOS</span><span>Arcade</span><span>One-Tap</span><span>Leaderboards</span>
+              </div>
+              <div class="project__actions">
+                <button class="project__link project__link--play" type="button" data-video="assets/twist-hero.qt">▶
+                  Watch Gameplay</button>
+                <a class="btn btn--primary btn--sm" href="https://apps.apple.com/us/app/twist-hero/id1058362930"
+                  target="_blank" rel="noopener">
+                  <i class="ti ti-brand-apple" aria-hidden="true"></i> App Store <span class="btn__arrow">↗</span>
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project project--featured reveal" data-cat="security">
+            <a class="project__media project__media--img" href="https://github.com/twist-hero/TWIST-PHISHER"
+              target="_blank" rel="noopener" aria-label="TWIST Phisher on GitHub">
+              <img class="project__poster" src="assets/twist-phisher.png"
+                alt="TWIST Phisher — phishing simulation & awareness toolkit" loading="lazy" />
+              <span class="project__badge"><i class="ti ti-shield-lock" aria-hidden="true"></i> Security · Open
+                Source</span>
+              <span class="project__ghover" aria-hidden="true"><i class="ti ti-brand-github"></i></span>
+            </a>
+            <div class="project__body">
+              <span class="project__cat">Bash · Security Research</span>
+              <h3 class="project__title">SAFFUL Phisher — Phishing Simulation Toolkit</h3>
+              <p class="project__desc">An authorized red-team &amp; security-awareness toolkit: 33 realistic login
+                templates, Cloudflare / Ngrok tunneling, a live credential-capture dashboard, visitor geo-IP &amp;
+                device fingerprinting, and an SMTP spear-phishing module with four email templates. Built strictly for
+                consented penetration testing and awareness training.</p>
+              <div class="project__tags"><span>Bash</span><span>PHP</span><span>Python</span><span>Red
+                  Team</span><span>33 Templates</span></div>
+              <div class="project__actions">
+                <a class="btn btn--primary btn--sm" href="https://github.com/twist-hero/TWIST-PHISHER" target="_blank"
+                  rel="noopener">
+                  <i class="ti ti-brand-github" aria-hidden="true"></i> View on GitHub <span class="btn__arrow">↗</span>
+                </a>
+                <span class="project__note"><i class="ti ti-shield-check" aria-hidden="true"></i> For education &amp;
+                  authorized testing only</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="project reveal" data-cat="dev">
+            <a class="project__media project__media--img" href="assets/MagicAi.zip" download
+              aria-label="Download MagicAi source code">
+              <img class="project__poster" src="assets/magicai.jpg"
+                alt="MagicAi — AI Chatbot & content-generation platform source code" loading="lazy" />
+              <span class="project__badge"><i class="ti ti-robot" aria-hidden="true"></i> AI · Source Code</span>
+              <span class="project__ghover" aria-hidden="true"><i class="ti ti-download"></i></span>
+            </a>
+            <div class="project__body">
+              <span class="project__cat">Laravel · AI SaaS Platform</span>
+              <h3 class="project__title">MagicAi — AI Chatbot / Source Code</h3>
+              <p class="project__desc">An all-in-one AI content platform — AI text, image &amp; photo studio, video
+                generator, chatbot, speech-to-text, voiceover and code generation. Powered by OpenAI with credits, plans
+                &amp; billing. Full source code, ready to deploy.</p>
+              <div class="project__tags"><span>Laravel</span><span>OpenAI</span><span>PHP</span><span>SaaS</span></div>
+              <div class="project__actions">
+                <a class="btn btn--primary btn--sm" href="assets/MagicAi.zip" download>
+                  <span class="btn__icon">⭳</span> Download Code
+                </a>
+              </div>
+            </div>
+          </article>
+
+          <article class="project-soon reveal" aria-label="More projects coming soon">
+            <div class="soon__inner">
+              <span class="soon__plus" aria-hidden="true"><i class="ti ti-plus"></i></span>
+              <h3 class="soon__title">More Coming Soon</h3>
+              <p class="soon__desc">New builds in dev, design &amp; security are on the way.</p>
+              <span class="soon__dots" aria-hidden="true"><i></i><i></i><i></i></span>
+            </div>
+          </article>
+
+        </div>
+      </div>
+
+      <!-- Video modal -->
+      <div class="vmodal" id="video-modal" aria-hidden="true">
+        <div class="vmodal__backdrop" data-close></div>
+        <div class="vmodal__dialog" role="dialog" aria-modal="true" aria-label="Project demo video">
+          <button class="vmodal__close" type="button" data-close aria-label="Close video">✕</button>
+          <span class="vmodal__beat" aria-hidden="true">
+            <span class="vmodal__beat-bars"><i></i><i></i><i></i><i></i></span>
+            muted · lo-fi beat
+          </span>
+          <video id="video-modal-player" class="vmodal__video" controls playsinline preload="none"
+            poster="assets/ovoride-poster.png"></video>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CERTIFICATES ============ -->
+    <section class="section certs-section" id="certs">
+      <canvas class="cert-particles" id="cert-particles" aria-hidden="true"></canvas>
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">// credentials</span>
+          <h2 class="section__title">Certifications &amp; <span class="accent">Badges</span></h2>
+          <p class="section__sub">Earned, not collected — every cert backed by hands-on work.</p>
+        </div>
+
+        <div class="certs__grid" id="certs-grid">
+          <article class="cert-card" data-delay="0"
+            style="--accent:#ef4444;--glow:#ef444430;--glow-bg:#ef444412;--glow-bg2:#ef444420;--glow-bd:#ef444430;--accent-d:#b91c1c;--prog:100%">
+            <span class="cert-pulse" aria-hidden="true"></span>
+            <div class="cert-iconwrap"><span class="cert-ring" aria-hidden="true"></span><span
+                class="cert-icon">🛡️</span></div>
+            <div class="cert-id">CERT-001</div>
+            <h3 class="cert-name">OSCP</h3>
+            <p class="cert-desc">Offensive Security Certified Professional</p>
+            <span class="cert-badge">✦ Active · 2023</span>
+            <div class="cert-prog">
+              <div class="cert-prog-fill"></div>
+            </div>
+          </article>
+
+          <article class="cert-card" data-delay="1"
+            style="--accent:#f59e0b;--glow:#f59e0b30;--glow-bg:#f59e0b12;--glow-bg2:#f59e0b20;--glow-bd:#f59e0b30;--accent-d:#b45309;--prog:100%">
+            <span class="cert-pulse" aria-hidden="true"></span>
+            <div class="cert-iconwrap"><span class="cert-ring" aria-hidden="true"></span><span
+                class="cert-icon">🔐</span></div>
+            <div class="cert-id">CERT-002</div>
+            <h3 class="cert-name">CEH</h3>
+            <p class="cert-desc">Certified Ethical Hacker — EC-Council</p>
+            <span class="cert-badge">✦ Active · 2022</span>
+            <div class="cert-prog">
+              <div class="cert-prog-fill"></div>
+            </div>
+          </article>
+
+          <article class="cert-card" data-delay="2"
+            style="--accent:#3b82f6;--glow:#3b82f630;--glow-bg:#3b82f612;--glow-bg2:#3b82f620;--glow-bd:#3b82f630;--accent-d:#1d4ed8;--prog:100%">
+            <span class="cert-pulse" aria-hidden="true"></span>
+            <div class="cert-iconwrap"><span class="cert-ring" aria-hidden="true"></span><span
+                class="cert-icon">☁️</span></div>
+            <div class="cert-id">CERT-003</div>
+            <h3 class="cert-name">AWS SAA</h3>
+            <p class="cert-desc">Solutions Architect — Associate</p>
+            <span class="cert-badge">✦ Active · 2023</span>
+            <div class="cert-prog">
+              <div class="cert-prog-fill"></div>
+            </div>
+          </article>
+
+          <article class="cert-card" data-delay="3"
+            style="--accent:#a78bfa;--glow:#a78bfa30;--glow-bg:#a78bfa12;--glow-bg2:#a78bfa20;--glow-bd:#a78bfa30;--accent-d:#7c3aed;--prog:100%">
+            <span class="cert-pulse" aria-hidden="true"></span>
+            <div class="cert-iconwrap"><span class="cert-ring" aria-hidden="true"></span><span
+                class="cert-icon">⚙️</span></div>
+            <div class="cert-id">CERT-004</div>
+            <h3 class="cert-name">CompTIA</h3>
+            <p class="cert-desc">Security+ &amp; PenTest+ Dual Badge</p>
+            <span class="cert-badge">✦ Active · 2022</span>
+            <div class="cert-prog">
+              <div class="cert-prog-fill"></div>
+            </div>
+          </article>
+
+          <article class="cert-card" data-delay="4"
+            style="--accent:#34d399;--glow:#34d39930;--glow-bg:#34d39912;--glow-bg2:#34d39920;--glow-bd:#34d39930;--accent-d:#059669;--prog:100%">
+            <span class="cert-pulse" aria-hidden="true"></span>
+            <div class="cert-iconwrap"><span class="cert-ring" aria-hidden="true"></span><span
+                class="cert-icon">🌐</span></div>
+            <div class="cert-id">CERT-005</div>
+            <h3 class="cert-name">eWPT</h3>
+            <p class="cert-desc">Web Application Penetration Tester</p>
+            <span class="cert-badge">✦ Active · 2023</span>
+            <div class="cert-prog">
+              <div class="cert-prog-fill"></div>
+            </div>
+          </article>
+
+          <article class="cert-card" data-delay="5"
+            style="--accent:#f472b6;--glow:#f472b630;--glow-bg:#f472b612;--glow-bg2:#f472b620;--glow-bd:#f472b630;--accent-d:#be185d;--prog:100%">
+            <span class="cert-pulse" aria-hidden="true"></span>
+            <div class="cert-iconwrap"><span class="cert-ring" aria-hidden="true"></span><span
+                class="cert-icon">🔎</span></div>
+            <div class="cert-id">CERT-006</div>
+            <h3 class="cert-name">GPEN</h3>
+            <p class="cert-desc">GIAC Penetration Tester — SANS</p>
+            <span class="cert-badge">✦ Active · 2024</span>
+            <div class="cert-prog">
+              <div class="cert-prog-fill"></div>
+            </div>
+          </article>
+
+          <article class="cert-card" data-delay="6"
+            style="--accent:#fb923c;--glow:#fb923c30;--glow-bg:#fb923c12;--glow-bg2:#fb923c20;--glow-bd:#fb923c30;--accent-d:#c2410c;--prog:100%">
+            <span class="cert-pulse" aria-hidden="true"></span>
+            <div class="cert-iconwrap"><span class="cert-ring" aria-hidden="true"></span><span
+                class="cert-icon">🐳</span></div>
+            <div class="cert-id">CERT-007</div>
+            <h3 class="cert-name">CKA</h3>
+            <p class="cert-desc">Certified Kubernetes Administrator — CNCF</p>
+            <span class="cert-badge">✦ Active · 2024</span>
+            <div class="cert-prog">
+              <div class="cert-prog-fill"></div>
+            </div>
+          </article>
+
+          <article class="cert-card" data-delay="7"
+            style="--accent:#22d3ee;--glow:#22d3ee30;--glow-bg:#22d3ee12;--glow-bg2:#22d3ee20;--glow-bd:#22d3ee30;--accent-d:#0e7490;--prog:85%">
+            <span class="cert-pulse" aria-hidden="true"></span>
+            <div class="cert-iconwrap"><span class="cert-ring" aria-hidden="true"></span><span
+                class="cert-icon">📡</span></div>
+            <div class="cert-id">CERT-008</div>
+            <h3 class="cert-name">OSEP</h3>
+            <p class="cert-desc">Advanced Evasion Techniques &amp; Breaching</p>
+            <span class="cert-badge">⏳ In Progress · 2025</span>
+            <div class="cert-prog">
+              <div class="cert-prog-fill"></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="cert-strip reveal">
+          <div class="cert-strip-item"><span class="cert-strip-dot" style="background:#34d399"></span>7 Active
+            Certifications</div>
+          <div class="cert-strip-item"><span class="cert-strip-dot" style="background:#f59e0b"></span>1 In Progress
+          </div>
+          <div class="cert-strip-item"><span class="cert-strip-dot" style="background:#3b82f6"></span>All Hands-On
+            Validated</div>
+          <div class="cert-strip-item"><span class="cert-strip-dot" style="background:#a78bfa"></span>Updated 2024</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ TESTIMONIALS ============ -->
+    <section class="section section--alt" id="reviews">
+      <div class="container">
+        <div class="section__head reveal">
+          <span class="kicker">// testimonials</span>
+          <h2 class="section__title">Client <span class="accent">Reviews</span></h2>
+        </div>
+
+        <div class="rv-carousel reveal">
+          <canvas class="rv-particles" id="rv-particles" aria-hidden="true"></canvas>
+
+          <div class="rv-viewport" id="rv-viewport">
+            <div class="rv-track" id="rv-track">
+
+              <article class="rv-card">
+                <span class="rv-quote">"</span>
+                <div class="rv-stars" aria-label="Rated 5 out of 5"><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i></div>
+                <p class="rv-text">Safful rebuilt our platform and ran a full security audit. Faster, cleaner, and
+                  finally something I trust. Rare to find dev and security skill in one person.</p>
+                <div class="rv-author">
+                  <span class="rv-avatar" style="background:#142a4a;color:#60a5fa">SJ</span>
+                  <div class="rv-author-info">
+                    <span class="rv-name">Sarah Johnson</span>
+                    <span class="rv-role">Product Lead, FinEdge</span>
+                    <span class="rv-badge"><i class="ti ti-rosette-discount-check-filled"></i> Verified Client</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="rv-card">
+                <span class="rv-quote">"</span>
+                <div class="rv-stars" aria-label="Rated 5 out of 5"><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i></div>
+                <p class="rv-text">The pentest report was the most thorough I've seen — clear severity, real exploits,
+                  exact fixes. Professional from start to finish. Already planning the next engagement.</p>
+                <div class="rv-author">
+                  <span class="rv-avatar" style="background:#142a4a;color:#60a5fa">MC</span>
+                  <div class="rv-author-info">
+                    <span class="rv-name">Michael Chen</span>
+                    <span class="rv-role">CTO, Stacklane</span>
+                    <span class="rv-badge"><i class="ti ti-rosette-discount-check-filled"></i> Verified Client</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="rv-card">
+                <span class="rv-quote">"</span>
+                <div class="rv-stars" aria-label="Rated 5 out of 5"><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i></div>
+                <p class="rv-text">Stunning UI and rock-solid code. Safful understood our brand instantly and shipped
+                  ahead of schedule. The attention to detail was exactly what we needed. Already booked the next
+                  project.</p>
+                <div class="rv-author">
+                  <span class="rv-avatar" style="background:#142a4a;color:#60a5fa">ED</span>
+                  <div class="rv-author-info">
+                    <span class="rv-name">Emma Davis</span>
+                    <span class="rv-role">Founder, Lumen</span>
+                    <span class="rv-badge"><i class="ti ti-rosette-discount-check-filled"></i> Verified Client</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="rv-card">
+                <span class="rv-quote">"</span>
+                <div class="rv-stars" aria-label="Rated 5 out of 5"><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i></div>
+                <p class="rv-text">We brought Safful in to fix a critical auth vulnerability two weeks before launch. He
+                  had it patched and hardened in 36 hours. Kept us calm, kept us on schedule. That composure under
+                  pressure is rare.</p>
+                <div class="rv-author">
+                  <span class="rv-avatar" style="background:#143a2c;color:#34d399">AR</span>
+                  <div class="rv-author-info">
+                    <span class="rv-name">Alex Rivera</span>
+                    <span class="rv-role">Engineering Lead, NovaPay</span>
+                    <span class="rv-badge"><i class="ti ti-rosette-discount-check-filled"></i> Verified Client</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="rv-card">
+                <span class="rv-quote">"</span>
+                <div class="rv-stars" aria-label="Rated 5 out of 5"><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i></div>
+                <p class="rv-text">Safful redesigned our entire dashboard from scratch. I gave him a rough brief and got
+                  back something better than I imagined. The codebase is clean enough that our internal team can
+                  actually maintain it.</p>
+                <div class="rv-author">
+                  <span class="rv-avatar" style="background:#28203f;color:#a78bfa">JP</span>
+                  <div class="rv-author-info">
+                    <span class="rv-name">Jordan Park</span>
+                    <span class="rv-role">Head of Product, Clarix</span>
+                    <span class="rv-badge"><i class="ti ti-rosette-discount-check-filled"></i> Verified Client</span>
+                  </div>
+                </div>
+              </article>
+
+              <article class="rv-card">
+                <span class="rv-quote">"</span>
+                <div class="rv-stars" aria-label="Rated 5 out of 5"><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i class="ti ti-star-filled"></i><i
+                    class="ti ti-star-filled"></i></div>
+                <p class="rv-text">Hired Safful for a red team engagement on our SaaS infrastructure. He found three
+                  critical vectors our previous firm missed completely. Executive-ready and technically precise at the
+                  same time. Now an annual contract.</p>
+                <div class="rv-author">
+                  <span class="rv-avatar" style="background:#3a1c1c;color:#f87171">DK</span>
+                  <div class="rv-author-info">
+                    <span class="rv-name">David Kim</span>
+                    <span class="rv-role">CISO, Vaultline</span>
+                    <span class="rv-badge"><i class="ti ti-rosette-discount-check-filled"></i> Verified Client</span>
+                  </div>
+                </div>
+              </article>
+
+            </div>
+          </div>
+
+          <div class="rv-nav">
+            <button class="rv-btn" id="rv-prev" type="button" aria-label="Previous review"><i class="ti ti-chevron-left"
+                aria-hidden="true"></i></button>
+            <div class="rv-dots" id="rv-dots" role="tablist" aria-label="Review navigation"></div>
+            <button class="rv-btn" id="rv-next" type="button" aria-label="Next review"><i class="ti ti-chevron-right"
+                aria-hidden="true"></i></button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CONTACT ============ -->
+    <section class="section ct-section" id="contact">
+      <div class="ct-glow-1" aria-hidden="true"></div>
+      <div class="ct-glow-2" aria-hidden="true"></div>
+      <div class="container">
+        <div class="ct-layout">
+          <!-- LEFT: intro + channels -->
+          <div class="ct-intro reveal">
+            <span class="ct-pill-badge"><span class="ct-pill-dot"></span>Contact · Inbox Open</span>
+            <h2 class="ct-bigtitle">Send a <span class="accent">message.</span></h2>
+            <p class="ct-lead">Project work, a system to secure, or just to say hi. I read every message and reply
+              within 24 hours, usually faster.</p>
+
+            <div class="ct-channels">
+              <a class="ct-channel" href="mailto:twisthero15@gmail.com">
+                <span class="ct-channel-num">01</span>
+                <span class="ct-channel-body">
+                  <span class="ct-channel-name">Email</span>
+                  <span class="ct-channel-val">safful652@gmail.com</span>
+                </span>
+                <span class="ct-channel-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a class="ct-channel" href="https://wa.me/233550778863" target="_blank" rel="noopener">
+                <span class="ct-channel-num">02</span>
+                <span class="ct-channel-body">
+                  <span class="ct-channel-name">WhatsApp</span>
+                  <span class="ct-channel-val">+233 55 077 8863</span>
+                </span>
+                <span class="ct-channel-arrow" aria-hidden="true">↗</span>
+              </a>
+              <a class="ct-channel" href="https://t.me/twist0x" target="_blank" rel="noopener">
+                <span class="ct-channel-num">03</span>
+                <span class="ct-channel-body">
+                  <span class="ct-channel-name">Telegram</span>
+                  <span class="ct-channel-val">@twist0x</span>
+                </span>
+                <span class="ct-channel-arrow" aria-hidden="true">↗</span>
+              </a>
+              <button type="button" class="ct-channel" id="ct-discord" data-copy="twist1z">
+                <span class="ct-channel-num">04</span>
+                <span class="ct-channel-body">
+                  <span class="ct-channel-name">Discord</span>
+                  <span class="ct-channel-val">twist1z</span>
+                </span>
+                <span class="ct-channel-arrow ct-channel-copy" aria-hidden="true">copy</span>
+              </button>
+            </div>
+
+            <a href="#hero" class="ct-back">← Back to top</a>
+          </div>
+
+          <!-- RIGHT: compose card -->
+          <form class="ct-compose reveal" id="contact-form" novalidate>
+            <!-- Honeypot: hidden from humans, bots that fill it are silently dropped -->
+            <input type="text" name="_honey" tabindex="-1" autocomplete="off" aria-hidden="true"
+              style="position:absolute;left:-9999px;opacity:0;height:0;width:0;" />
+
+            <div class="ct-compose-bar">
+              <span class="ct-compose-dots" aria-hidden="true"><i></i><i></i><i></i></span>
+              <span class="ct-compose-title">compose · new message</span>
+              <span class="ct-compose-enc"><span class="ct-enc-dot"></span>Encrypted</span>
+            </div>
+
+            <div class="ct-compose-body">
+              <div class="ct-cat">
+                <div class="ct-cat-head">
+                  <span class="ct-mini-label">Category</span>
+                  <span class="ct-mini-hint">// pick one</span>
+                </div>
+                <div class="ct-cat-toggle" id="ct-cat-toggle" role="radiogroup" aria-label="Message category">
+                  <button type="button" class="ct-cat-btn is-active" data-cat="General" role="radio"
+                    aria-checked="true">General</button>
+                  <button type="button" class="ct-cat-btn" data-cat="Project" role="radio"
+                    aria-checked="false">Project</button>
+                  <button type="button" class="ct-cat-btn" data-cat="Security" role="radio"
+                    aria-checked="false">Security</button>
+                </div>
+                <input type="hidden" name="category" id="ct-category" value="General" />
+              </div>
+
+              <div class="ct-row">
+                <div class="ct-field">
+                  <div class="ct-mini-row"><label class="ct-mini-label" for="name">Name</label><span
+                      class="ct-idx">01</span></div>
+                  <input class="ct-input" type="text" id="name" name="name" required
+                    placeholder="your name or handle" />
+                </div>
+                <div class="ct-field">
+                  <div class="ct-mini-row"><label class="ct-mini-label" for="email">Email</label><span
+                      class="ct-idx">02</span></div>
+                  <input class="ct-input" type="email" id="email" name="email" required placeholder="root@yourdomain" />
+                </div>
+              </div>
+
+              <div class="ct-field">
+                <div class="ct-mini-row"><label class="ct-mini-label" for="subject">Subject</label><span
+                    class="ct-idx">03</span></div>
+                <input class="ct-input" type="text" id="subject" name="subject" placeholder="one short line" />
+              </div>
+
+              <div class="ct-field">
+                <div class="ct-mini-row"><label class="ct-mini-label" for="message">Message</label><span
+                    class="ct-idx">04 · <span id="ct-count">0</span>/2000</span></div>
+                <textarea class="ct-textarea" id="message" name="message" required maxlength="2000"
+                  placeholder="Hey,&#10;&#10;I'm writing about…"></textarea>
+              </div>
+
+              <p class="ct-meta-line">replies within <b>24h</b> · GDPR-compliant · never shared</p>
+
+              <div class="ct-actions">
+                <button type="submit" class="ct-send-btn">Send message <span aria-hidden="true">→</span></button>
+                <a class="ct-wa-btn" id="ct-wa-send" href="https://wa.me/233550778863" target="_blank" rel="noopener">
+                  <i class="ti ti-brand-whatsapp" aria-hidden="true"></i> WhatsApp instead
+                </a>
+              </div>
+              <p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="container footer__grid">
+      <div class="footer__brand">
+        <a href="#hero" class="brand">
+          <img src="assets/logo.png" alt="WhoamiTwist logo" class="brand__logo" />
+          <span class="brand__text">IAM<span class="accent">SAFFUL</span></span>
+        </a>
+        <p>Full-Stack Developer · UI/UX Designer · Ethical Hacker. Building secure, beautiful digital experiences.</p>
+        <div class="footer__socials">
+          <a href="#" class="social" aria-label="GitHub">GH</a>
+          <a href="#" class="social" aria-label="LinkedIn">in</a>
+          <a href="#" class="social" aria-label="X">X</a>
+          <a href="#" class="social" aria-label="Telegram">TG</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h4>Navigate</h4>
+        <a href="#about">About</a>
+        <a href="#skills">Skills</a>
+        <a href="#projects">Projects</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Services</h4>
+        <a href="#services">Development</a>
+        <a href="#services">UI/UX Design</a>
+        <a href="#services">Ethical Hacking</a>
+        <a href="#services">Pentesting</a>
+      </div>
+
+      <div class="footer__col">
+        <h4>Contact</h4>
+        <a href="mailto:safful652@gmail.com">safful652@gmail.com</a>
+        <a href="#">Book a call</a>
+        <a href='assets/cv.html' rel='noopener' target='_blank'>Download CV</a>
+      </div>
+    </div>
+
+    <div class="container footer__bottom">
+      <p>© <span id="year"></span> IamSAFFUL. All rights reserved.</p>
+      <p>Designed &amp; built with <span class="accent">♥</span> and a healthy paranoia.</p>
+    </div>
+  </footer>
+
+  <a href="#hero" class="to-top" id="to-top" aria-label="Back to top">↑</a>
+
+  <!-- ============ COMMAND PALETTE (⌘K) ============ -->
+  <div class="cmdk" id="cmdk" aria-hidden="true">
+    <div class="cmdk__backdrop" data-cmdk-close></div>
+    <div class="cmdk__panel" role="dialog" aria-modal="true" aria-label="Command palette">
+      <div class="cmdk__search">
+        <i class="ti ti-search cmdk__search-icon" aria-hidden="true"></i>
+        <input class="cmdk__input" id="cmdk-input" type="text" placeholder="Type a command or search…"
+          aria-label="Command palette search" spellcheck="false" />
+        <kbd class="cmdk__esc">ESC</kbd>
+      </div>
+      <ul class="cmdk__list" id="cmdk-list" role="listbox"></ul>
+      <div class="cmdk__footer">
+        <span><kbd>↑</kbd><kbd>↓</kbd> navigate</span>
+        <span><kbd>↵</kbd> select</span>
+        <span><kbd>esc</kbd> close</span>
+      </div>
+    </div>
+  </div>
+
+  <script src="js/main.js"></script>
+</body>
+
+</html>
