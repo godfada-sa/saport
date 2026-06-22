@@ -127,12 +127,12 @@
       ring.classList.remove("is-hidden");
     });
 
-    // Smooth follow: dot tight, ring looser (trailing)
+    // Smooth follow: dot tight (almost instant), ring tighter for snappier response
     (function loop() {
-      dx += (mx - dx) * 0.35;
-      dy += (my - dy) * 0.35;
-      rx += (mx - rx) * 0.16;
-      ry += (my - ry) * 0.16;
+      dx += (mx - dx) * 0.75;
+      dy += (my - dy) * 0.75;
+      rx += (mx - rx) * 0.35;
+      ry += (my - ry) * 0.35;
       dot.style.transform = `translate(${dx}px, ${dy}px) translate(-50%,-50%)`;
       ring.style.transform = `translate(${rx}px, ${ry}px) translate(-50%,-50%)`;
       requestAnimationFrame(loop);
